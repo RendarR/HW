@@ -1,0 +1,7 @@
+.conteiner{
+    display: flex;
+    flex-direction: column;
+}
+p,h4{
+    margin: 5px;
+}
