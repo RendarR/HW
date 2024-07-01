@@ -1,0 +1,73 @@
+<!-- Поле для ввода названия продукта.
+// Текстовое поле для самого отзыва.
+// Кнопка "Добавить отзыв", которая сохраняет отзыв о продукте в LocalStorage. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="generallist">
+        <a class="generallist__a" href="./wathc.html">Перейти на страницу отзывов</a>
+    </div>
+    <div class="form">
+        <input class="input-name" type="text" placeholder="Название продукта">
+        <textarea class="input-text" cols="40" rows="5" placeholder="Отзыв о продукте"></textarea>
+        <button class="btn">Отправить отзыв</button>
+    </div>
+    <script>
+
+        const data = [
+            {
+                nameProduct: 'Название продукта',
+                textProduct: 'Текст отзыва'
+            }
+        ];
+        const nameProduct = document.querySelector('.input-name');
+        const textProduct = document.querySelector('.input-text');
+        const btnAdd = document.querySelector('.btn');
+
+        btnAdd.addEventListener('click', (e) => {
+            try{
+                if (!nameProduct.value){                                                    //Проверка на правильность ввода данных
+                    throw new Error('Поле названия товара пустое');
+                } else if(!textProduct.value){
+                    throw new Error('Поле отзыва пустое');
+                }
+                let id = 1;
+                for(let el in localStorage){                                                //Проверка на повторный отзыв на тот же самый товар
+                    try{
+                        console.log(el, id + '.' + nameProduct.value);
+                        if(el === id + '.' + nameProduct.value){
+                            localStorage.setItem(id + '.' + nameProduct.value, textProduct.value);
+                            id ++;
+                        } else {
+                            localStorage.setItem(id + '.' + nameProduct.value, textProduct.value);
+                        }
+                    }
+                    catch(err) {
+                        console.log('Ошибка:', err);
+                    }          
+                }
+                nameProduct.value = '';
+                textProduct.value = '';
+                console.log(localStorage);
+            }
+            catch(error){
+                console.error('Ошибка:', error);
+            }
+        })
+// Создайте интерактивную веб-страницу для оставления и просмотра отзывов о продуктах. Пользователи могут добавлять отзывы о 
+// различных продуктах и просматривать добавленные отзывы.
+
+// Страница добавления отзыва:
+// Поле для ввода названия продукта.
+// Текстовое поле для самого отзыва.
+// Кнопка "Добавить отзыв", которая сохраняет отзыв о продукте в LocalStorage.
+    </script>
+</body>
+</html>

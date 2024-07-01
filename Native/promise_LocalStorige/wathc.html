@@ -1,0 +1,76 @@
+<!-- Показывает список всех продуктов, о которых были оставлены отзывы.
+// При клике на название продукта отображается список всех отзывов по этому продукту.
+// Возможность удаления отзыва (при нажатии на кнопку "Удалить" рядом с отзывом, данный отзыв удаляется из LocalStorage). -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="conteiner">
+        <a href="./add.html" class="generallist__a">Написать новый отзыв о товаре</a>
+        <h1 class="list">Список продуктов:</h1>
+        <ul class="ul-list">
+            <li class="li-list">
+                <!-- <p class="li-list__p li-list__p-name">Товар 1</p> -->
+            </li>
+        </ul>
+    </div>
+    <div class="conteiner2">
+        <h1 class="list">Отзывы о каждом товаре:</h1>
+        <ul class="ul-list">
+            <li class="li-list">
+                <p class="li-list__p-text"></p>
+                <button class="delete">Удалить отзывы</button>
+            </li>
+        </ul>
+    </div>    
+    <script>
+        // Показывает список всех продуктов, о которых были оставлены отзывы.
+        const listNames = document.querySelector('.li-list');
+        console.log(listNames);
+        for (let el in localStorage) {
+            if(el.toString()[0] === '1'){
+                listNames.innerHTML+= `<p class="li-list__p li-list__p-name">Товар: ${el.slice(2)}</p>`
+            }
+        }
+        const dataNames = [localStorage];
+
+        // При клике на название продукта отображается список всех отзывов по этому продукту.
+        // Возможность удаления отзыва (при нажатии на кнопку "Удалить" рядом с отзывом, данный отзыв удаляется из LocalStorage).
+        const listTextp = document.querySelector('.li-list__p-text');
+        const listNamesP = document.querySelectorAll('.li-list__p');
+        const deleteBtn = document.querySelector('.delete');
+        let indexPost;
+        let eventDelete;
+        listNamesP.forEach((element, value) => {
+            element.addEventListener('click', (e) => {
+                listTextp.innerHTML = '';
+                const name = e.target.innerHTML.slice(7);
+                eventDelete = name;
+                for(let i = 0; i < localStorage.length; i++){
+                    console.log(localStorage.getItem((i) + '.' + name));
+                    indexPost = i;
+                    if(localStorage.getItem((i) + '.' + name)){
+                        listTextp.innerHTML += ' Отзыв: ' + localStorage.getItem((i) + '.' + name);
+                    }
+                }
+            })
+        });
+        deleteBtn.addEventListener('click', (e) => {
+            console.log(eventDelete);
+            localStorage.removeItem(1 + '.' + eventDelete);
+            listTextp.innerHTML ='';
+            console.log(listNames[indexPost]);
+            // listNames[indexPost].removeItem();
+        })
+
+        
+        
+    </script>
+</body>
+</html>
