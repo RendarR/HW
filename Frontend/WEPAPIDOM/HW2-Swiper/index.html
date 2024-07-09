@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./index.js" type="module" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        *{
+            margin: auto;
+            padding: auto;
+        }
+        .swiper {
+            width: 100vw;
+            height: 100vh;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="https://img2.akspic.ru/crops/0/4/8/5/7/175840/175840-atmosfera-mir-svet-priroda-derevo-3840x2160.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="https://img3.akspic.ru/crops/6/7/9/4/7/174976/174976-tkan-art-uzor-zhivopis-elektrik-3840x2160.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="https://img3.akspic.ru/crops/1/1/7/0/7/170711/170711-nacionalnyj_park_triglav-shvejcarskij_nacionalnyj_park-morennoe_ozero-nacionalnyj_park-priroda-3840x2160.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="https://img3.akspic.ru/previews/8/4/7/4/6/164748/164748-brok_hofer-cifrovoe_iskusstvo-proizvedenie_iskusstva-art-purpurnyj_cvet-x750.jpg" alt=""></div>
+    </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+</body>
+</html>
